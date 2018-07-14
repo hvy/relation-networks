@@ -45,12 +45,12 @@ Answers are word tokens from a vocabulary of `[left, right, top, bottom, circle,
 
 ```bash
 python generate_sort_of_clevr.py \
-	--n-images 10000 \
-	--n-relational-per-image 10 \
-	--n-non-relational-per-image 10 \
-	--height 75 \
-	--width  75 \
-	--out sort_of_clevr.pkl
+    --n-images 10000 \
+    --n-relational-per-image 10 \
+    --n-non-relational-per-image 10 \
+    --height 75 \
+    --width  75 \
+    --out sort_of_clevr.pkl
 ```
 
 By default, 6 colors and 2 shapes; circle and rectangle are provided. It is easily extended to to additional colors, and thereby increased to more objects per image, and shapes, by directly modifying the scripts involved. You can also create [your own shapes](datasets/sort_of_clevr/shape.py), if you want, and then import then in `generate.py`.
