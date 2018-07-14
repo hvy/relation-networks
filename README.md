@@ -19,14 +19,14 @@ This implementation reproduces the results with the Sort-of-CLEVR dataset, descr
 
 <img align="right" src="samples/sort_of_clevr_samples.png">
 
-#### Relative questions
+#### Relational questions
 
 - What is the shape of the object that is closes to the gray object?
 - What is the shape of the object that is furthest from the red object?
 - How many objects have the shape of the orange object?
 
 
-#### Non-relative questions
+#### Non-relational questions
 
 - Is the orange object on the left or right of the image?
 - Is the blue object on the top or bottom of the image?
