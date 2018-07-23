@@ -78,6 +78,21 @@ python train.py \
     --sort-of-clevr-path sort_of_clevr.pkl \
     --max-epochs 20 \
     --out result \
+    --snapshot-iter 10000 \
+    --gpu 0
+
+```
+
+## Test
+
+To test a snapshot of trained model and output a prediction in a readable representation, run the following command. You need to again provide the path to the dataset as well as an index to an image for which a prediction will be computed. This image will be saved in the file path specified by `--out` and the question, prediction and the correct answer will be printed to stdout.
+
+```bash
+python demo.py \
+    --sort-of-clevr-path sort_of_clevr.pkl \
+    --sort-of-clevr-index 1 \
+    --out result/demo.png \
+    --snapshot result/snapshot_10000 \
     --gpu 0
 
 ```
