@@ -2,6 +2,8 @@ import pickle
 
 from chainer import dataset
 
+from datasets.sort_of_clevr.sort_of_clevr import SortOfCLEVR
+
 
 class SortOfCLEVRDataset(dataset.DatasetMixin):
 
@@ -38,9 +40,7 @@ def get_sort_of_clevr(sort_of_clevr_path):
     with open(sort_of_clevr_path, 'rb') as f:
         data = pickle.load(f)
 
-    imgs = data['imgs']
-    questions = data['questions']
-    answers = data['answers']
-    answer_vocab = data['answer_vocab']
-
-    return SortOfCLEVRDataset(imgs, questions, answers), answer_vocab
+    dataset = SortOfCLEVRDataset(
+        data['imgs'], data['questions'], data['answers'])
+    clevr = SortOfCLEVR(**data['sort_of_clevr_kwargs'])
+    return dataset, clevr

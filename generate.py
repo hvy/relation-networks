@@ -38,13 +38,23 @@ if __name__ == '__main__':
 
     clevr = SortOfCLEVR(
         _background_color, _colors, _shapes, height=args.height,
-        width=args.width,
-        n_relational_per_img=args.n_relational_per_image,
+        width=args.width, n_relational_per_img=args.n_relational_per_image,
         n_non_relational_per_img=args.n_non_relational_per_image)
 
     images, questions, answers = clevr.generate(args.n_images)
 
     with open(args.out, 'wb') as f:
         pickle.dump({
-            'imgs': images, 'questions': questions, 'answers': answers,
-            'answer_vocab': clevr.vocab}, f)
+            'imgs': images,
+            'questions': questions,
+            'answers': answers,
+            'sort_of_clevr_kwargs': {
+                'background_color': clevr.background_color,
+                'colors': clevr.colors,
+                'shapes': clevr.shapes,
+                'height': clevr.height,
+                'width': clevr.width,
+                'n_relational_per_img': clevr.n_relational_per_img,
+                'n_non_relational_per_img': clevr.n_non_relational_per_img,
+            },
+        }, f)

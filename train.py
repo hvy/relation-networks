@@ -36,7 +36,7 @@ if __name__ == '__main__':
                         help='Output directory')
     args = parser.parse_args()
 
-    dataset, answer_vocab = dataset.get_sort_of_clevr(args.sort_of_clevr_path)
+    dataset, clevr = dataset.get_sort_of_clevr(args.sort_of_clevr_path)
 
     train = dataset[:-args.n_val_questions]
     val = dataset[-args.n_val_questions:]
@@ -45,7 +45,8 @@ if __name__ == '__main__':
     val_iter = chainer.iterators.SerialIterator(
         val, args.batch_size, repeat=False, shuffle=False)
 
-    model = L.Classifier(RelationNetwork(len(answer_vocab)))
+    relation_network = RelationNetwork(len(clevr.vocab))
+    model = L.Classifier(relation_network)
 
     if args.gpu >= 0:
         chainer.backends.cuda.get_device_from_id(args.gpu).use()
@@ -92,7 +93,8 @@ if __name__ == '__main__':
         trigger=(args.log_iter, 'iteration')
     )
     trainer.extend(
-        extensions.snapshot_object(model, 'model_{.updater.iteration}'),
+        extensions.snapshot_object(
+            relation_network, 'snapshot_{.updater.iteration}'),
         trigger=(args.snapshot_iter, 'iteration')
     )
     trainer.extend(extensions.ProgressBar())
