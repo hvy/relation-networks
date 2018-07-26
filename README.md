@@ -85,7 +85,7 @@ python train.py \
 
 ## Test
 
-To test a snapshot of trained model and output a prediction in a readable representation, run the following command. You need to again provide the path to the dataset as well as an index to an image for which a prediction will be computed. This image will be saved in the file path specified by `--out` and the question, prediction and the correct answer will be printed to stdout.
+To test a snapshot of a trained model and output a prediction in a readable representation, run the following command. You need to again provide the path to the dataset as well as an index to an image for which a prediction will be computed. This image will be saved in the file path specified by `--out` and the question, prediction and the correct answer will be printed to stdout.
 
 ```bash
 python demo.py \
